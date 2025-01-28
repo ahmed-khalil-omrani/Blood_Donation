@@ -30,15 +30,14 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    # Third-party
     "allauth",
     "allauth.account",
     "crispy_forms",
-    "crispy_bootstrap5",
     "debug_toolbar",
-    # Local
+    "crispy_bootstrap5",
     "accounts",
     "pages",
+    "blood"
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
@@ -85,18 +84,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
-# For Docker/PostgreSQL usage uncomment this and comment the DATABASES config above
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "postgres",
-#         "USER": "postgres",
-#         "PASSWORD": "postgres",
-#         "HOST": "db",  # set in docker-compose.yml
-#         "PORT": 5432,  # default postgres port
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
