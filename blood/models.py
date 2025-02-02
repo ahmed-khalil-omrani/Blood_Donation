@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.conf import settings
 class BloodDonor(models.Model):
     bloodtype=[
             ('A+', 'A+'),
@@ -15,7 +14,7 @@ class BloodDonor(models.Model):
     ]
     first_name=models.CharField(max_length=20)
     last_name=models.CharField(max_length=20)
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.OneToOneField(User , on_delete=models.CASCADE)
     birth_day= models.DateField(default=timezone.now)
     blood_type= models.CharField(max_length=3 ,choices=bloodtype , default='A+')
     def __str__(self):
@@ -34,11 +33,10 @@ class BloodNeeder(models.Model):
     ]
     first_name=models.CharField(max_length=10)
     last_name=models.CharField(max_length=10)
-    user=models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user=models.OneToOneField(User , on_delete=models.CASCADE)
     birth_day= models.DateField(default=timezone.now)
     blood_type=models.CharField(max_length=3 , choices=blood_types , default='A+')
     def __str__(self):
         return self.user.username
 
 # Create your models here.
-

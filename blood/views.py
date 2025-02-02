@@ -11,7 +11,7 @@ def connection(request):
 #-------------------------------------------Donor----------------------------------------------
 def donor_profile(request , username):
     donor=get_object_or_404(BloodDonor , user__username=username)
-    return render(request , 'home.html',{'donor':donor})
+    return render(request , 'donor_profile.html',{'donor':donor})
 
 
 def donor_create(request):
@@ -23,12 +23,12 @@ def donor_create(request):
            donor=dform.save(commit=False)
            donor.user=user 
            donor.save()
-           return redirect('home' , username=user.username)
+           return redirect('donor_profile' , username=user.username)
     else:
         
         dform=DonorForm()
         uform=UserForm()
-    return render(request , 'login.html',{'dform':dform , 'uform':uform})
+    return render(request , 'donor_form.html',{'dform':dform , 'uform':uform})
 
 
 
@@ -40,8 +40,8 @@ def login_donor(request):
             user=authenticate(request , username=form.cleaned_data['username'] , password=form.cleaned_data['password'])
             if user is not None:
                 login(request , user)
-                return redirect('home.html' , username=user.username)
-    return render(request , 'login.html',{'form':form} )
+                return redirect('donor_profile' , username=user.username)
+    return render(request , 'login_donor.html',{'form':form} )
 
 
 
@@ -49,7 +49,7 @@ def login_donor(request):
 #--------------------------------------------Needer--------------------------------------------
 def needer_profile(request , username):
     needer=get_object_or_404(BloodNeeder , user__username=username)
-    return render(request , "home.html" , {'needer':needer})
+    return render(request , "needer_profile.html" , {'needer':needer})
 
 def needer_create(request):
     if request.method=='POST':
@@ -60,11 +60,11 @@ def needer_create(request):
             needer=nform.save(commit=False)
             needer.user=user
             needer.save()
-            return redirect('home' , username=user.username)
+            return redirect('needer_profile' , username=user.username)
     else:
         nform=NeederForm()
         uform=UserForm()
-    return render(request , 'home.html' , {'nform':nform , 'uform':uform})
+    return render(request , 'needer_form.html' , {'nform':nform , 'uform':uform})
         
 
         

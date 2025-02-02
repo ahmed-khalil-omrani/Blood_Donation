@@ -1,0 +1,26 @@
+{% static load %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'styles_profiles'%}">
+    <title>Document</title>
+</head>
+<body>
+    <dev class="container">
+        <h1>Blood Needer Profile</h1>
+        <div class="donor-info">
+            <h2>{{donor.first_name}} {{donor.last_name}}</h2>
+            <p ><strong>First Name</strong>:{{ donor.first_name }}</p>
+            <p><strong >Last Name:</strong> {{ donor.last_name }}</p>
+            <p><strong >Birth Date:</strong> {{ donor.birth_day }}</p>
+            <p><strong >Blood Type:</strong> {{ donor.blood_type }}</p>
+            <p><strong>Email:</strong> {{ donor.user.email }}</p>
+        </div>
+        
+
+
+    </dev>
+</body>
+</html>
